@@ -24,26 +24,24 @@ const Admin = ()=>{
     return (
         <div className=" h-full w-full bg-blue-500 flex items-center justify-center ">
             <div className=" h-5/6 w-11/12 p-2 flex flex-row items-center justify-center bg-white rounded-md">
-                <div className="h-full w-1/5 border-r-zinc-200 border-r-2 flex flex-col ">
+                <div className="h-full w-1/6 border-r-zinc-200 border-r-2 flex flex-col ">
                     <div className="p-3 text-3xl text-black font-bold">
                         Dashboard
                     </div>
                     <div className="mt-32 w-full ">
-                        <ul className="w-full">
                             {
                                 tabs.map((tab)=>{
-                                    return <Link to={"" + tab.route}>
-                                        <li className="mx-2 my-4 p-4 bg-zinc-50 rounded-md hover:bg-zinc-200" key={tab.name}>
+                                    return <Link to={tab.route} className="w-full">
+                                        <button className="w-11/12 mx-2 my-1 p-4 bg-zinc-50 rounded-md hover:bg-zinc-200" key={tab.name}>
                                             {tab.name}
-                                        </li>
+                                        </button>
                                     </Link>
 
                                 })
                             }
-                        </ul>
                     </div>
                 </div>
-                <div className="h-full w-4/5 ">
+                <div className="h-full w-5/6 ">
                     <Routes>
                         <Route path="/" element={ <AdminHome /> } />
                         <Route path="/elections" element={<AdminElections />} />
