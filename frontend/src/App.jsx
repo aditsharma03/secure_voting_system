@@ -14,7 +14,7 @@ function App() {
             <div className='h-screen w-screen'>
                 <Routes>
                     <Route path="/" element={<Login />} />
-                    <Route path="/admin" element={<Admin />} />
+                    <Route path="/admin/*" element={<Admin />} />
                     <Route path="/voter" element={<Voter />} />
                     <Route path="/ballot" element={<Ballot />} />
                 </Routes>

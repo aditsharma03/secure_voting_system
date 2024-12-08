@@ -1,8 +1,56 @@
+import { Link, Route, Routes } from "react-router-dom";
+import AdminElections from "./AdminElections/AdminElections";
+import AdminVoters from "./AdminVoters/AdminVoters";
+import AdminHome from "./AdminHome/AdminHome";
 
 const Admin = ()=>{
+
+    const tabs = [
+        {
+            name: "Home",
+            route: "/admin"
+        },
+        {
+            name: "Elections",
+            route: "/admin/elections",
+        },
+        {
+            name: "Voters",
+            route: "/admin/voters",
+        },
+    ];
+
+
     return (
-        <div>
-            Admin
+        <div className=" h-full w-full bg-blue-500 flex items-center justify-center ">
+            <div className=" h-5/6 w-11/12 p-2 flex flex-row items-center justify-center bg-white rounded-md">
+                <div className="h-full w-1/5 border-r-zinc-200 border-r-2 flex flex-col ">
+                    <div className="p-3 text-3xl text-black font-bold">
+                        Dashboard
+                    </div>
+                    <div className="mt-32 w-full ">
+                        <ul className="w-full">
+                            {
+                                tabs.map((tab)=>{
+                                    return <Link to={"" + tab.route}>
+                                        <li className="mx-2 my-4 p-4 bg-zinc-50 rounded-md hover:bg-zinc-200" key={tab.name}>
+                                            {tab.name}
+                                        </li>
+                                    </Link>
+
+                                })
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div className="h-full w-4/5 ">
+                    <Routes>
+                        <Route path="/" element={ <AdminHome /> } />
+                        <Route path="/elections" element={<AdminElections />} />
+                        <Route path="/voters" element={ <AdminVoters /> } />
+                    </Routes>
+                </div>
+            </div>
         </div>
     );
 }
